@@ -113,7 +113,7 @@ export const NB_CORE_PROVIDERS = [
         baseEndpoint: environment.backendUrl,
         login: {
           // ...
-          endpoint: '/auth/login',
+          endpoint: '/autenticacion/login',
           redirect: {
             // success: '/dashboard/',
             success: null,
@@ -121,21 +121,33 @@ export const NB_CORE_PROVIDERS = [
           },
         },
         register: {
-          endpoint: '/auth/sign-up',
+          endpoint: '/autenticacion/sign-up',
         },
         logout: {
-          endpoint: '/auth/sign-out',
+          endpoint: '/autenticacion/sign-out',
         },
         requestPass: {
-          endpoint: '/auth/request-pass',
+          endpoint: '/autenticacion/request-pass',
         },
         resetPass: {
-          endpoint: '/auth/reset-pass',
+          endpoint: '/autenticacion/reset-pass',
         },
         token: {
           // class: NbAuthJWTToken,
           key: 'token', // this parameter tells where to look for the token
-        }
+        },
+        errors: {
+          getter: (module, res, options) => {            
+            return res.error ? res.error.Message : options[module].defaultErrors;
+          },
+        },
+        messages: {
+          getter: (module, res, options) => {   
+            console.log(res);
+                     
+            return res.body ? res.body.Message : options[module].defaultMessages;
+          },
+        },
       }),
     ],
     forms: {
