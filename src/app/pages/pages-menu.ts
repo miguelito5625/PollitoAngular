@@ -23,6 +23,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
       {
         title: 'Stepper',
         link: '/pages/layout/stepper',
+        children: [
+          {
+            title: 'test',
+          }
+        ],
       },
       {
         title: 'List',

@@ -115,8 +115,8 @@ export const NB_CORE_PROVIDERS = [
           // ...
           endpoint: '/autenticacion/login',
           redirect: {
-            // success: '/dashboard/',
-            success: null,
+            success: '/dashboard/',
+            // success: null,
             failure: null, // stay on the same page
           },
         },

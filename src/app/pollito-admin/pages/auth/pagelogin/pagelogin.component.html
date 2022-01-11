@@ -2,17 +2,17 @@
 <!-- <nb-login></nb-login> -->
 
 <h1 id="title" class="title">Login</h1>
-<p class="sub-title">Hello! Log in with your email.</p>
+<p class="sub-title">Utiliza tu usuario para iniciar sesion</p>
 
 <nb-alert *ngIf="showMessages.error && errors?.length && !submitted" outline="danger" role="alert">
-  <p class="alert-title"><b>Oh snap!</b></p>
+  <p class="alert-title"><b>Error!</b></p>
   <ul class="alert-message-list">
     <li *ngFor="let error of errors" class="alert-message">{{ error }}</li>
   </ul>
 </nb-alert>
 
 <nb-alert *ngIf="showMessages.success && messages?.length && !submitted" outline="success" role="alert">
-  <p class="alert-title"><b>Hooray!</b></p>
+  <p class="alert-title"><b>Todo bien!</b></p>
   <ul class="alert-message-list">
     <li *ngFor="let message of messages" class="alert-message">{{ message }}</li>
   </ul>
@@ -21,7 +21,7 @@
 <form (ngSubmit)="login()" #form="ngForm" aria-labelledby="title">
 
   <div class="form-control-group">
-    <label class="label" for="input-email">Email address:</label>
+    <label class="label" for="input-email">Usuario:</label>
     <input nbInput
            fullWidth
            [(ngModel)]="user.username"
@@ -29,7 +29,7 @@
            name="text"
            id="input-email"
 
-           placeholder="Email address"
+           placeholder=""
            autofocus
            [status]="email.dirty ? (email.invalid  ? 'danger' : 'success') : ''"
            [required]="getConfigValue('forms.validation.email.required')"
@@ -40,16 +40,16 @@
 
     <ng-container *ngIf="email.invalid && email.touched">
       <p class="error-message" *ngIf="email.errors?.required">
-        Email is required!
+        Usuario es requerido!
       </p>
-      <p class="error-message" *ngIf="email.errors?.pattern">
+      <!-- <p class="error-message" *ngIf="email.errors?.pattern">
         Email should be the real one!
-      </p>
+      </p> -->
     </ng-container>
   </div>
 
   <div class="form-control-group">
-    <label class="label" for="input-password">Password:</label>
+    <label class="label" for="input-password">Contraseña:</label>
     <input nbInput
            fullWidth
            [(ngModel)]="user.password"
@@ -57,7 +57,7 @@
            name="password"
            type="password"
            id="input-password"
-           placeholder="Password"
+           placeholder=""
            [status]="password.dirty ? (password.invalid  ? 'danger' : 'success') : ''"
            [required]="getConfigValue('forms.validation.password.required')"
            [minlength]="getConfigValue('forms.validation.password.minLength')"
@@ -68,7 +68,7 @@
         Password is required!
       </p>
       <p class="error-message" *ngIf="password.errors?.minlength || password.errors?.maxlength">
-        Password should contains
+        Contraseña deberia contener
         from {{ getConfigValue('forms.validation.password.minLength') }}
         to {{ getConfigValue('forms.validation.password.maxLength') }}
         characters
@@ -77,8 +77,8 @@
   </div>
 
   <div class="form-control-group accept-group">
-    <nb-checkbox name="rememberMe" [(ngModel)]="user.rememberMe" *ngIf="rememberMe">Remember me</nb-checkbox>
-    <a class="forgot-password" routerLink="../request-password">Forgot Password?</a>
+    <nb-checkbox name="rememberMe" [(ngModel)]="user.rememberMe" *ngIf="rememberMe">Recuerdame</nb-checkbox>
+    <!-- <a class="forgot-password" routerLink="../request-password">Forgot Password?</a> -->
   </div>
 
   <button nbButton
@@ -86,7 +86,7 @@
           status="success"
           [disabled]="submitted || !form.valid"
           [class.btn-pulse]="submitted">
-    Log In
+    Ingresar
   </button>
 </form>
 

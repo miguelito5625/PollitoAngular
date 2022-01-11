@@ -5,5 +5,5 @@
  */
 export const environment = {
   production: true,
-  backendUrl: 'http://localhost:3000'
+  backendUrl: 'https://argon-jetty-334803.uc.r.appspot.com'
 };

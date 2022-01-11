@@ -5,6 +5,7 @@
  */
 import { Component, OnInit } from '@angular/core';
 import { NbAuthJWTToken, NbAuthService } from '@nebular/auth';
+import { environment } from '../environments/environment';
 import { AnalyticsService } from './@core/utils/analytics.service';
 import { SeoService } from './@core/utils/seo.service';
 
@@ -36,5 +37,10 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     // this.analytics.trackPageViews();
     // this.seoService.trackCanonicalChanges();
+    console.log("ESTO ES UNA PRUEBA");
+    console.log(environment.backendUrl);
+    console.log(environment.production);
+    
+    
   }
 }

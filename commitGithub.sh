@@ -7,5 +7,5 @@ if [ -z "$1" ]
 fi
 git add -A
 git commit -am "$1"
-git push -u origin main
+git push -u origin main --no-verify
 echo "SUBIDA A GITHUB FINALIZADA"
