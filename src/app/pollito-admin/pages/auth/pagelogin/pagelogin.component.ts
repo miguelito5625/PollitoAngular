@@ -39,6 +39,8 @@ export class PageloginComponent {
 
     this.service.authenticate(this.strategy, this.user).subscribe((result: NbAuthResult) => {
       this.submitted = false;
+      console.log(result);
+      
 
       if (result.isSuccess()) {
         this.messages = result.getMessages();

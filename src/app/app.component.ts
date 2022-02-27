@@ -37,9 +37,9 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     // this.analytics.trackPageViews();
     // this.seoService.trackCanonicalChanges();
-    console.log("ESTO ES UNA PRUEBA");
-    console.log(environment.backendUrl);
-    console.log(environment.production);
+    console.log("LOG DESDE APP COMPONENT");
+    console.log("BACKEND:",environment.backendUrl);
+    console.log("PRODUCTION:",environment.production);
     
     
   }
