@@ -17,6 +17,11 @@ export const routes: Routes = [
       .then(m => m.PagesModule),
   },
   {
+    path: 'clientes',
+    loadChildren: () => import('./pollito-admin/pages/pages-clientes/pages-clientes.module')
+      .then(m => m.PagesClientesModule),
+  },
+  {
     path: 'auth',
     component: NbAuthComponent,
     children: [
