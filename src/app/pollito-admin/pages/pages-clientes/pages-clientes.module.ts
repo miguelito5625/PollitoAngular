@@ -10,7 +10,7 @@ import { FsIconComponent } from '../../../pages/tables/tree-grid/tree-grid.compo
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { CrearClientesComponent } from './crear-clientes/crear-clientes.component';
 import { FormsRoutingModule } from '../../../pages/forms/forms-routing.module';
-import { FormsModule as ngFormsModule } from '@angular/forms';
+import { FormsModule as ngFormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -31,7 +31,6 @@ import { FormsModule as ngFormsModule } from '@angular/forms';
     NbInputModule,
     ThemeModule,
     Ng2SmartTableModule,
-
     NbButtonModule,
     NbActionsModule,
     NbUserModule,
@@ -41,6 +40,7 @@ import { FormsModule as ngFormsModule } from '@angular/forms';
     FormsRoutingModule,
     NbSelectModule,
     ngFormsModule,
+    ReactiveFormsModule
   ]
 })
 export class PagesClientesModule { }

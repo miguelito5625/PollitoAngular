@@ -1,39 +1,99 @@
 <div class="row">
-    <div class="col-lg-6">
+    <div class="col-lg-12">
       <nb-card>
         <nb-card-header>Crear cliente</nb-card-header>
         <nb-card-body>
-            <input type="text" nbInput fullWidth placeholder="DPI">
+          <form [formGroup]="formularioCliente" (ngSubmit)="crearCliente()">
+            
+            <div class="form-group">
+              <label for="inputDPI" class="label">DPI</label>
+            <input type="text" formControlName="dpi" id="inputDPI" nbInput fullWidth placeholder="DPI">
+            </div>
+
+            <!-- <div class="form-group">
+
           <div class="full-name-inputs">
-            <input type="text" nbInput fullWidth placeholder="Primer nombre">
-            <input type="text" nbInput fullWidth placeholder="Segundo nombre">
-          </div>
-          <div class="full-name-inputs">
-            <input type="text" nbInput fullWidth placeholder="Primer apellido">
-            <input type="text" nbInput fullWidth placeholder="Segundo apellido">
+            <label for="inputPrimerNombre" class="label">Pirmer nombre</label>
+            <input type="text" formControlName="primerNombre" id="inputPrimerNombre" nbInput fullWidth placeholder="Primer nombre">
+            <label for="inputSegundoNombre" class="label">Pirmer nombre</label>
+            <input type="text" formControlName="segundoNombre" id="inputSegundoNombre" nbInput fullWidth placeholder="Segundo nombre">
           </div>
 
-          <nb-select (selectedChange)="cambioDeDepartamento($event)" fullWidth placeholder="Departamento">
+            </div> -->
+
+
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="inputPrimerNombre" class="label">Pirmer nombre</label>
+                  <input type="text" formControlName="primerNombre" nbInput fullWidth id="inputPrimerNombre" placeholder="Pirmer nombre">
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="inputSegundoNombre" class="label">Segundo nombre</label>
+                  <input type="text" formControlName="segundoNombre" nbInput fullWidth id="inputSegundoNombre" placeholder="Segundo nombre">
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="inputPrimerApellido" class="label">Pirmer apellido</label>
+                  <input type="text" formControlName="primerApellido" nbInput fullWidth id="inputPrimerApellido" placeholder="Pirmer apellido">
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="inputSegundoApellido" class="label">Segundo apellido</label>
+                  <input type="text" formControlName="segundoApellido" nbInput fullWidth id="inputSegundoApellido" placeholder="Segundo apellido">
+                </div>
+              </div>
+            </div>
+
+
+            <!-- <div class="form-group">
+          <div class="full-name-inputs">
+            <input type="text" formControlName="primerApellido" nbInput fullWidth placeholder="Primer apellido">
+            <input type="text" formControlName="segundoApellido" nbInput fullWidth placeholder="Segundo apellido">
+          </div>
+            </div> -->
+
+            <div class="form-group">
+              <label for="inputDPI" class="label">Departamento</label>
+          <nb-select formControlName="departamento" (selectedChange)="cambioDeDepartamento($event)" fullWidth placeholder="Departamento">
             <!-- <nb-option value="Guatemala">Guatemala</nb-option> -->
             <nb-option *ngFor="let departamento of departamentos" value="{{departamento}}">{{departamento}}</nb-option>
           </nb-select>
+            </div>
 
-          <nb-select fullWidth placeholder="Municipios">
+            <div class="form-group">
+              <label for="inputDPI" class="label">Municipio</label>
+          <nb-select formControlName="municipio" fullWidth placeholder="Municipio">
             <!-- <nb-option value="Guatemala">Guatemala</nb-option> -->
             <nb-option *ngFor="let municipio of municipios" value="{{municipio}}">{{municipio}}</nb-option>
           </nb-select>
-          
-          <!-- <input type="text" nbInput fullWidth placeholder="Municipio"> -->
+            </div>
+
+            <div class="form-group">
+              <label for="inputDPI" class="label">Direccion</label>
+          <input type="text" formControlName="direccion" nbInput fullWidth placeholder="Direccion">
+            </div>
+
+            <div class="form-group">
+              <label for="inputDPI" class="label">Indicaciones</label>
+          <textarea formControlName="indicaciones" rows="5" nbInput fullWidth shape="round"  placeholder="Indicaciones"></textarea>
+            </div>
+
+            <button type="submit" nbButton status="primary">Guardar</button>
 
 
-          <input type="text" nbInput fullWidth placeholder="Direccion">
+        </form>
 
-
-          <textarea rows="5" nbInput fullWidth shape="round"  placeholder="Indicaciones"></textarea>
-
-          <button nbButton status="primary">
+          <!-- <button nbButton status="primary">
             Guardar
-          </button>
+          </button> -->
           
         </nb-card-body>
       </nb-card>
