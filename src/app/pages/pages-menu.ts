@@ -13,6 +13,10 @@ export const MENU_ITEMS: NbMenuItem[] = [
     link: '/clientes/list',
     children: [
       {
+        title: 'Crear',
+        link: '/clientes/create',
+      },
+      {
         title: 'Lista',
         link: '/clientes/list',
       },
