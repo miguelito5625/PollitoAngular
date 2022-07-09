@@ -23,21 +23,21 @@ export class ClientesService {
   ) { }
 
   crearCliente(datos): Observable<Cliente> {
-    return this.httpClient.post<Cliente>(this.apiServer + '/clientes', JSON.stringify(datos), this.httpOptions)
+    return this.httpClient.post<Cliente>(this.apiServer + '/clients', JSON.stringify(datos), this.httpOptions)
       .pipe(
         catchError(this.errorHandler)
       )
   }
 
   actualizarCliente(datos): Observable<Cliente> {
-    return this.httpClient.put<Cliente>(this.apiServer + '/clientes', JSON.stringify(datos), this.httpOptions)
+    return this.httpClient.put<Cliente>(this.apiServer + '/clients', JSON.stringify(datos), this.httpOptions)
       .pipe(
         catchError(this.errorHandler)
       )
   }
 
   obtenerClientes(): Observable<Cliente> {
-    return this.httpClient.get<Cliente>(this.apiServer + '/clientes', this.httpOptions)
+    return this.httpClient.get<Cliente>(this.apiServer + '/clients', this.httpOptions)
       .pipe(
         catchError(this.errorHandler)
       )

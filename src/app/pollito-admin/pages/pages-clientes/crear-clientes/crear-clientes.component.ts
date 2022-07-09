@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Cliente } from '../../../../interfaces/cliente';
+import { ClientesService } from '../../../../servicios/clientes.service';
 import { DEPARTAMENTOS_Y_MUNICIPIOS } from '../../../../utilidades/guatemala';
 
 @Component({
@@ -10,21 +12,23 @@ import { DEPARTAMENTOS_Y_MUNICIPIOS } from '../../../../utilidades/guatemala';
 export class CrearClientesComponent implements OnInit {
 
   formularioCliente = new FormGroup({
-    dpi: new FormControl(''),
-    primerNombre: new FormControl(''),
-    segundoNombre: new FormControl(''),
-    primerApellido: new FormControl(''),
-    segundoApellido: new FormControl(''),
-    departamento: new FormControl(''),
-    municipio: new FormControl(''),
-    direccion: new FormControl(''),
-    indicaciones: new FormControl(''),
+    dpi: new FormControl('545646526'),
+    primerNombre: new FormControl('Miguel'),
+    segundoNombre: new FormControl('Angel'),
+    primerApellido: new FormControl('Archila'),
+    segundoApellido: new FormControl('Garcia'),
+    departamento: new FormControl('Izabal'),
+    municipio: new FormControl('Los Amates'),
+    direccion: new FormControl('Barrio los cocos, Quirigua'),
+    indicaciones: new FormControl('cerca de un lugar'),
   });
 
   departamentos: Array<String> = [];
   municipios: Array<String> = [];
 
-  constructor() {
+  constructor(
+    private servicioClientes: ClientesService
+  ) {
     this.retornarDepartamentos();
   }
 
@@ -55,6 +59,27 @@ export class CrearClientesComponent implements OnInit {
     console.log("Funciona");
     console.log(this.formularioCliente.value);
     
+    const cliente: Cliente = {
+      dpi: this.formularioCliente.value.dpi,
+      primer_nombre: this.formularioCliente.value.primerNombre,
+      segundo_nombre: this.formularioCliente.value.segundoNombre,
+      primer_apellido: this.formularioCliente.value.primerApellido,
+      segundo_apellido: this.formularioCliente.value.segundoApellido,
+      departamento: this.formularioCliente.value.departamento,
+      municipio: this.formularioCliente.value.municipio,
+      direccion: this.formularioCliente.value.direccion,
+      indicaciones: this.formularioCliente.value.indicaciones
+    };
+
+    this.servicioClientes.crearCliente(cliente).subscribe(
+      (res) => {
+        console.log(res);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+
     
   }
 
