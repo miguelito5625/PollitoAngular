@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
 import { SmartTableData } from '../../../../@core/data/smart-table';
 import { Cliente } from '../../../../interfaces/cliente';
@@ -9,7 +9,7 @@ import { ClientesService } from '../../../../servicios/clientes.service';
   templateUrl: './list-clientes.component.html',
   styleUrls: ['./list-clientes.component.scss']
 })
-export class ListClientesComponent implements OnInit {
+export class ListClientesComponent implements OnInit, OnDestroy {
 
   clientes: Array<Cliente> = [];
 
@@ -18,17 +18,21 @@ export class ListClientesComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  ngOnDestroy(): void {
+    this.subscribeObtenerClientes.unsubscribe();
+  }
+
   settings = {
     // add: {
     //   addButtonContent: '<i class="nb-plus"></i>',
     //   createButtonContent: '<i class="nb-checkmark"></i>',
     //   cancelButtonContent: '<i class="nb-close"></i>',
     // },
-    // add: false,
     edit: {
       editButtonContent: '<i class="nb-edit"></i>',
       saveButtonContent: '<i class="nb-checkmark"></i>',
       cancelButtonContent: '<i class="nb-close"></i>',
+      confirmSave: true,
     },
     delete: {
       deleteButtonContent: '<i class="nb-trash"></i>',
@@ -36,7 +40,13 @@ export class ListClientesComponent implements OnInit {
     },
     actions: {
       add: false,
-      // edit: false
+      // edit: false,
+      custom: [
+        {
+          name: 'mostrarDatos',
+          title: '<i class="nb-lightbulb" title="Mostrar datos"></i>',
+        },
+      ]
     },
     columns: {
       dpi: {
@@ -77,7 +87,7 @@ export class ListClientesComponent implements OnInit {
       (res) => {
         // console.log("CLIENTES:");
         // console.log(res['Data']);
-        
+
         res['Data'].forEach(element => {
           const cliente: Cliente = {
             id_persona: element.Persona.ID,
@@ -106,11 +116,31 @@ export class ListClientesComponent implements OnInit {
 
   onDeleteConfirm(event): void {
     console.log(event);
-    
-    if (window.confirm('Are you sure you want to delete?')) {
-      event.confirm.resolve();
-    } else {
-      event.confirm.reject();
+
+    // if (window.confirm('Are you sure you want to delete?')) {
+    //   event.confirm.resolve();
+    // } else {
+    //   event.confirm.reject();
+    // }
+  }
+
+  onSaveConfirm(event) {
+    console.log('Nuevos Datos');
+    console.log(event.newData);
+    event.confirm.resolve(event.newData);
+  }
+
+
+  onCustomEvent(event) {
+    console.log(event);
+    switch (event.action) {
+      case 'mostrarDatos':
+        console.log("Preparando mostrar datos");
+
+        break;
+      case 'otroCustom':
+        console.log('Otro custom');
+        break;
     }
   }
 
