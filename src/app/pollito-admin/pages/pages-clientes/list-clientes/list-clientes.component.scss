@@ -15,6 +15,8 @@
 :host ::ng-deep ng2-st-tbody-create-cancel a.ng2-smart-action {display: inline-block !important;}
 :host ::ng-deep ng2-st-tbody-custom a.ng2-smart-action.ng2-smart-action-custom-custom {
     display: inline-block;
-    width: 40px;
+    height: auto !important;
+    width: auto !important;
     text-align: center;
+    
 }

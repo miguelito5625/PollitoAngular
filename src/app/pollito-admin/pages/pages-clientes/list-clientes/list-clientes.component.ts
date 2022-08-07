@@ -40,11 +40,20 @@ export class ListClientesComponent implements OnInit, OnDestroy {
     },
     actions: {
       add: false,
-      // edit: false,
+      edit: false,
+      delete: false,
       custom: [
         {
           name: 'mostrarDatos',
           title: '<i class="nb-lightbulb" title="Mostrar datos"></i>',
+        },
+        {
+          name: 'editarDatos',
+          title: '<i class="nb-edit" title="Editar"></i>',
+        },
+        {
+          name: 'borrarDatos',
+          title: '<i class="nb-trash" title="Borrar datos"></i>',
         },
       ]
     },
